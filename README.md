@@ -5,9 +5,9 @@ Beardo Control
 ![Appengine](http://bkarak.wizhut.com/blog/wp-content/uploads/2012/01/app_engine-64.png)
 ![Python](http://blog.magiksys.net/sites/default/files/pictures/python-logo-64.png)
 
-This repository provides the control server for a beardo installation. The
-application uses [Google's secure scaffold][gae-secure-scaffold-python] to
-provide a secure base for development.
+This repository provides the control server for a beardo installation. A
+beardo-control install lives at the centre of an installation, providing a
+single point of control/information.
 
 ***
 
