@@ -80,6 +80,8 @@ class Gitlab(object):
         page = 1
         while not len(projects) % 100:
             projects += self._get('/projects?{0}'.format(urllib.urlencode({'per_page': 100, 'page': page})))
+            if not projects:
+                break
             page += 1
         return projects
 
@@ -114,6 +116,8 @@ class Gitlab(object):
         page = 1
         while not len(users) % 100:
             users += self._get('/users?{0}'.format(urllib.urlencode({'per_page': 100, 'page': page})))
+            if not users:
+                break
             page += 1
         return users
 
