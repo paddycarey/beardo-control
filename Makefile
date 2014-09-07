@@ -35,14 +35,15 @@ run: storage
 	@-docker rm $(PROJNAME)-run
 	docker run -t -i --rm --name $(PROJNAME)-run --volumes-from $(PROJNAME) -v $(CURDIR)/app:/app -p 0.0.0.0:8080:8080 -p 0.0.0.0:8000:8000 beardo/$(PROJNAME) make -C /app run
 
-prospector: storage
-	docker run -t -i --volumes-from $(PROJNAME) -v $(CURDIR)/app:/app -v $(CURDIR)/output:/output beardo/$(PROJNAME) make -C /app prospector
+prospector: build
+	docker run -t -i -v $(CURDIR)/app:/app -v $(CURDIR)/output:/output beardo/$(PROJNAME) make -C /app prospector
+	docker run -t -i -v $(CURDIR)/app:/app -v $(CURDIR)/output:/output beardo/$(PROJNAME) piprot /tmp/requirements.txt
 
 shell: storage
 	docker run -t -i --volumes-from $(PROJNAME) -v $(CURDIR)/app:/app -v $(CURDIR)/output:/output beardo/$(PROJNAME) bash
 
-test: storage
-	docker run -t -i --volumes-from $(PROJNAME) -v $(CURDIR)/app:/app -v $(CURDIR)/output:/output $(USER_ID) beardo/$(PROJNAME) make -C /app test
+test: build
+	docker run -t -i -v $(CURDIR)/app:/app -v $(CURDIR)/output:/output $(USER_ID) beardo/$(PROJNAME) make -C /app test
 
 deploy: storage
 	docker run -t -i --volumes-from $(PROJNAME) -v $(CURDIR)/app:/app beardo/$(PROJNAME) make -C /app deploy
