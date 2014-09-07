@@ -1,0 +1,27 @@
+{% extends 'base/base.html' %}
+
+{% block internal_content %}
+
+    <div class="row">
+
+        <div class="col-xs-12">
+            <h3><i class="fa fa-flask"></i> {{ project.name }}</h3>
+            <hr>
+        </div>
+
+        <div class="col-xs-12">
+            <h4>Build Log</h4>
+            <div class="well">
+                <code>
+                    {% for line_no, line in enumerate(build_log.build_data['build_logs']) %}
+                        <p><strong>[{{ line_no }}]: {{ line['command'] }}</strong></p>
+<pre>{% for lc in line['output'] %}
+{{ lc }}{% endfor %}</pre>
+                    {% endfor %}
+                </code>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

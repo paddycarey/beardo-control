@@ -1,0 +1,9 @@
+queue:
+- name: default
+  rate: 100/s
+  max_concurrent_requests: 1
+- name: gitlab-sync
+  rate: 100/s
+  max_concurrent_requests: 1
+- name: build-queue
+  mode: pull

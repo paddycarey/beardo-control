@@ -1,0 +1,63 @@
+{% macro render_field(field, placeholder='', readonly=False) %}
+    <div class="form-group col-sm-9{% if field.errors %} has-error{% endif%}">
+        {{ field.label }}
+        {% if readonly %}
+            {{ field(class="form-control", placeholder=placeholder, readonly=true) }}
+        {% else %}
+            {{ field(class="form-control", placeholder=placeholder) }}
+        {% endif %}
+        <span class="help-block">{{ field.description|safe }}</span>
+    </div>
+{% endmacro %}
+
+{% macro render_errors(form) %}
+    <div class="alert alert-danger col-sm-9">
+        <p>
+            <strong>Uh oh</strong> <i class="fa fa-exclamation"></i> There are errors below, you'll need to correct them before you can continue.
+        </p>
+        <br>
+        <ul>
+            {% for field_name, field_errors in form.errors|dictsort if field_errors %}
+                {% for error in field_errors %}
+                    <li><strong>{{ form[field_name].label }}:</strong> {{ error }}</li>
+                {% endfor %}
+            {% endfor %}
+        </ul>
+    </div>
+{% endmacro %}
+
+{% macro render_form(form, cancel_url, form_header=None) %}
+<div class="container">
+
+    {% if form.errors %}
+        <div class="row">
+            {{ render_errors(form) }}
+        </div>
+    {% endif %}
+
+    <div class="row">
+
+        <form role="form" method="POST">
+
+            {% if form_header %}
+                <div class="col-sm-9">
+                    <h3>{{ form_header }}</h3>
+                    <hr>
+                </div>
+            {% endif %}
+
+            {% for field in form %}
+                {{ render_field(field) }}
+            {% endfor %}
+
+            <div class="form-group col-sm-9">
+                <button type="submit" class="btn btn-primary">Submit <i class="fa fa-save"></i></button>
+                <a href="{{ cancel_url }}" class="btn btn-default">Cancel <i class="fa fa-times"></i></a>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+{% endmacro %}

@@ -1,0 +1,4 @@
+*.pyc
+app/secrets.py
+output/coverage.xml
+output/nosetests.xml

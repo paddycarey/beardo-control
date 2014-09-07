@@ -1,0 +1,12 @@
+<div class="row pager-row">
+    <div class="col-xs-4">
+        <a href="{{ replace_query_param(request.url, 'cursor', None) }}" class="btn btn-warning btn-lg btn-block"{% if cursor == None %} disabled{% endif %}>
+            <i class="fa fa-chevron-circle-left"></i> Back to Start
+        </a>
+    </div>
+    <div class="col-xs-8">
+        <a href="{{ replace_query_param(request.url, 'cursor', next_cursor) }}" class="btn btn-info btn-lg btn-block"{% if next_cursor == None %} disabled{% endif %}>
+            Next Page <i class="fa fa-chevron-circle-right"></i>
+        </a>
+    </div>
+</div>

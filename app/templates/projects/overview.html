@@ -1,0 +1,58 @@
+{% extends 'base/base.html' %}
+
+{% block internal_content %}
+
+    <div class="row">
+
+        <div class="col-xs-12">
+            <h3><i class="fa fa-flask"></i> {{ project.name }}</h3>
+            <hr>
+        </div>
+
+        <div class="col-xs-12">
+            <h4>Usage</h4>
+            <p>Using this project is simple provided you already use git. First, add a new remote to your git repository:</p>
+            <div class="well">
+                <code>
+                    $ git remote add beardo {{ project.git_url }}
+                </code>
+            </div>
+            <p>Next, simply push your code to the provided repo:</p>
+            <div class="well">
+                <code>
+                    $ git push beardo master
+                </code>
+            </div>
+        </div>
+
+        <div class="col-xs-12">
+            <h4>Build Logs</h4>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <th>Timestamp</th>
+                    <th>ref</th>
+                    <th>SHA</th>
+                    <th>Success?</th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    {% for build_log in build_logs %}
+                        <tr class="{{ ['danger', 'success'][int(build_log.success)] }}">
+                            <td title="{{ build_log.created.strftime('%Y/%m/%d %H:%M:%S') }} UTC">{{ build_log.created | relative_date }}</td>
+                            <td>{{ build_log.git_ref }}</td>
+                            <td>{{ build_log.git_sha }}</td>
+                            <td>{{ build_log.success }}</td>
+                            <td><a href="{{ uri_for('build-view', project_id=project.key.id(), build_id=build_log.key.id()) }}" class="btn btn-primary"><i class="fa fa-eye-open"></i> View Log</a></td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="5">No build logs recorded.</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base/base.html' %}
+
+{% block extra_head %}
+  <!-- Custom styles for this template -->
+  <link href="/static/css/login.css" rel="stylesheet">
+{% endblock %}
+
+{% block common_header %}
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <div class="signin">
+      <h2 class="signin-heading"><i class="fa fa-flask"></i> beardo</h2>
+      <a href="{{ login_url }}" class="btn btn-lg btn-primary btn-block">
+        <span class="glyphicon glyphicon-log-out"></span> Sign in
+      </a>
+      {% if request.user %}
+      <div class="alert alert-warning">
+        <p>
+          <strong>Warning!</strong> This page is only accessible to registered users (you're signed in as <strong>{{ request.user.email() }}</strong>). Click <a href="{{ logout_url(uri_for('login')) }}">here</a> to log out and try again.
+        </p>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}
+
+{% block base_js %}
+{% endblock %}

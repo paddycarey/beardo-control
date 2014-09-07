@@ -1,0 +1,41 @@
+{% extends 'base/base.html' %}
+{% import 'base/macros.html' as form_macros %}
+
+{% block internal_content %}
+
+    <div class="row">
+        <div class="col-xs-12">
+
+            {% if form.errors %}
+                <div class="row">
+                    {{ form_macros.render_errors(form) }}
+                </div>
+            {% endif %}
+
+            <div class="row">
+
+                <form role="form" method="POST">
+
+                    <div class="col-sm-9">
+                        <h3>
+                            <i class="fa fa-key"></i> Add new SSH key
+                        </h3>
+                        <hr>
+                    </div>
+
+                    {{ form_macros.render_field(form.title) }}
+                    {{ form_macros.render_field(form.ssh_key) }}
+
+                    <div class="form-group col-sm-9">
+                        <button type="submit" class="btn btn-primary">Submit <i class="fa fa-save"></i></button>
+                        <a href="{{ cancel_url }}" class="btn btn-default">Cancel <i class="fa fa-times"></i></a>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

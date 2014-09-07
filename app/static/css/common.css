@@ -1,0 +1,68 @@
+.empty-row {
+  text-align: center;
+}
+
+/* make sidebar nav vertical */
+@media (min-width: 768px) {
+  .sidebar-nav .navbar .navbar-collapse {
+    padding: 0;
+    max-height: none;
+  }
+  .sidebar-nav .navbar ul {
+    float: none;
+  }
+  .sidebar-nav .navbar ul:not {
+    display: block;
+  }
+  .sidebar-nav .navbar li {
+    float: none;
+    display: block;
+  }
+  .sidebar-nav .navbar li a {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+}
+
+@media (max-width: 767px) {
+  .hide-mobile {
+    display: none;
+  }
+  .navbar-toggle {
+    border-color: #ddd;
+  }
+  .navbar-toggle .icon-bar {
+    background-color: #888;
+  }
+}
+
+.preview-image {
+  max-width: 150px;
+}
+
+.pager-row {
+  padding-bottom: 40px;
+  padding-top: 20px;
+}
+
+.no-dec {
+  color: #000000;
+}
+
+.no-dec-plus {
+  color: #000000;
+  text-decoration : none;
+}
+.no-dec-plus:hover {
+  color: #000000;
+  text-decoration : none;
+}
+.action-col {
+  max-width: 260px;
+}
+.counts-nav {
+  margin-bottom: 20px;
+}
+.add-ssh {
+  margin-top: 16px;
+}

@@ -1,0 +1,12 @@
+{% set flashes = request.session().get_flashes() %}
+{% if flashes %}
+<div class="row">
+    <div class="col-xs-12">
+        {% for flash in flashes %}
+        <div class="alert alert-{{ flash[1] }}">
+            <p>{{ flash[0] }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
