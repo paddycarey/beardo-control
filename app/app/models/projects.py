@@ -61,7 +61,7 @@ def get_page(cursor=None, sort_order='name'):
     """Retrieves a page of projects from the datastore
     """
     valid_sort_orders = ['created', 'name']
-    return base.get_page(Project, cursor=None, sort_order=sort_order, valid_sort_orders=valid_sort_orders)
+    return base.get_page(Project, cursor=cursor, sort_order=sort_order, valid_sort_orders=valid_sort_orders)
 
 
 def get_all():

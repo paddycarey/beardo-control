@@ -55,7 +55,7 @@ def get_page(cursor=None, sort_order='email'):
     """Retrieves a page of users from the datastore
     """
     valid_sort_orders = ['created', 'email']
-    return base.get_page(User, cursor=None, sort_order=sort_order, valid_sort_orders=valid_sort_orders)
+    return base.get_page(User, cursor=cursor, sort_order=sort_order, valid_sort_orders=valid_sort_orders)
 
 
 def get_all():
