@@ -38,6 +38,9 @@ run: storage
 prospector: storage
 	docker run -t -i --volumes-from $(PROJNAME) -v $(CURDIR)/app:/app -v $(CURDIR)/output:/output beardo/$(PROJNAME) make -C /app prospector
 
+shell: storage
+	docker run -t -i --volumes-from $(PROJNAME) -v $(CURDIR)/app:/app -v $(CURDIR)/output:/output beardo/$(PROJNAME) bash
+
 test: storage
 	docker run -t -i --volumes-from $(PROJNAME) -v $(CURDIR)/app:/app -v $(CURDIR)/output:/output $(USER_ID) beardo/$(PROJNAME) make -C /app test
 
