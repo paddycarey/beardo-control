@@ -9,11 +9,27 @@ This repository provides the control server for a beardo installation. A
 beardo-control install lives at the centre of an installation, providing a
 single point of control/information.
 
+
 ***
 
 This server uses [Docker][docker] to provide a standard development
 environment for all developers on the project, this is the preferred method of
 installation/development. No support is provided for non-docker setups.
+
+
+## Features (for now)
+***
+
+- Gitlab sync
+    - user accounts
+    - SSH keys
+    - projects (with webhooks, but not project-users yet)
+- Accepts webhooks on push to any attached git repo, enqueing a build job.
+- Queue API allowing build tasks to be leased/marked complete by a build worker.
+- Basic dashboard
+    - User management
+    - Project management
+    - View build logs
 
 
 ## Before you start
