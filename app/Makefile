@@ -27,6 +27,10 @@ run: clean
 		--storage_path /.appengine_storage/       \
 		--skip_sdk_update_check
 
+prospector: clean
+	# run prospector
+	@python ./run-prospector.py
+
 test: clean
 	# run tests with a coverage report
 	@python ./run-tests.py

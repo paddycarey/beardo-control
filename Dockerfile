@@ -25,6 +25,8 @@ RUN dpkg -i /packages/python-nose_1.3.4_all.deb
 ADD assets/python-yanc_0.2.4_all.deb /packages/python-yanc_0.2.4_all.deb
 RUN dpkg -i /packages/python-yanc_0.2.4_all.deb
 
+RUN pip install prospector
+
 # Download and install the Appengine Python SDK
 RUN wget -nv https://storage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.10.zip
 RUN unzip google_appengine_1.9.10.zip
