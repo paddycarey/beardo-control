@@ -93,12 +93,12 @@ def sync_ssh_keys(user_id):
 
     # add missing keys (those that exist locally) to gitlab
     for _lk in local_keys:
-        if not _lk.ssh_key in (x['key'] for x in remote_keys):
+        if _lk.ssh_key not in (x['key'] for x in remote_keys):
             gitlab_client.add_ssh_key(user_id, _lk.title, _lk.ssh_key)
 
     # remove orphaned keys (those that don't exist locally) from gitlab
     for _rk in remote_keys:
-        if not _rk['key'] in (x.ssh_key for x in local_keys):
+        if _rk['key'] not in (x.ssh_key for x in local_keys):
             gitlab_client.delete_ssh_key(user_id, _rk['id'])
 
 

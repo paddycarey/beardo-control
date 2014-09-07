@@ -15,12 +15,12 @@ def validate_ssh_key(form, field):
     """Ensure the passed in SSH key *looks* valid.
     """
     try:
-        type, key_string, comment = field.data.split()
+        _type, key_string, _ = field.data.split()
     except ValueError:
         raise ValidationError('Not a valid SSH key: requires 3 parts (type, key string and email/comment)')
 
     data = base64.decodestring(key_string)
     int_len = 4
     str_len = struct.unpack('>I', data[:int_len])[0]  # this should return 7
-    if not data[int_len:int_len+str_len] == type:
+    if not data[int_len:int_len+str_len] == _type:
         raise ValidationError('Not a valid SSH key')

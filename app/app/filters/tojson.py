@@ -39,7 +39,7 @@ hold true when using this function in HTML attributes that are double
 quoted. Always single quote attributes if you use the ``|tojson``
 filter. Alternatively use ``|tojson|forceescape``.
 """
-    rv = json.dumps(obj, cls=ModelEncoder) \
+    rv = json.dumps(obj, cls=ModelEncoder, **kwargs) \
         .replace(u'<', u'\\u003c') \
         .replace(u'>', u'\\u003e') \
         .replace(u'&', u'\\u0026') \

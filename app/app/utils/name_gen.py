@@ -42,10 +42,10 @@ def _get_noun():
 def generate():
     # originally from: https://gist.github.com/1266756
     # with some changes. example output: "falling-violet-d27b3a"
-    hex = "0123456789abcdef"
+    _hex = "0123456789abcdef"
     return (
         slugify(_get_adj()) + "-" +
         slugify(_get_noun()) + "-" +
-        random.choice(hex) + random.choice(hex) + random.choice(hex) +
-        random.choice(hex) + random.choice(hex) + random.choice(hex)
+        random.choice(_hex) + random.choice(_hex) + random.choice(_hex) +
+        random.choice(_hex) + random.choice(_hex) + random.choice(_hex)
     )

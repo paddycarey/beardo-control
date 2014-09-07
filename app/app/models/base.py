@@ -47,7 +47,7 @@ def _get_sort_order(model, sort_order, valid_sort_orders):
     """
     _fname = sort_order.lstrip('-')
     _so = getattr(model, _fname, None)
-    if _so is None or not _fname in valid_sort_orders:
+    if _so is None or _fname not in valid_sort_orders:
         logging.warning('{0} is not a valid sort order, defaulting to `{1}`'.format(sort_order, valid_sort_orders[0]))
         return getattr(model, valid_sort_orders[0]), _fname, True
     if sort_order.startswith('-'):
