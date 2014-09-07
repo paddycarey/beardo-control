@@ -2,6 +2,9 @@
 # -*- coding: utf-8 -*-
 """Prospector runner for beardo-control
 """
+# stdlib imports
+import sys
+
 # third-party imports
 from prospector import run
 
@@ -18,4 +21,6 @@ setup_environ()
 
 if __name__ == '__main__':
 
+    sys.argv = [sys.argv[0]]
+    sys.argv += ['--ignore-paths', 'vendor']
     run.main()
