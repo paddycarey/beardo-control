@@ -22,5 +22,5 @@ setup_environ()
 if __name__ == '__main__':
 
     sys.argv = [sys.argv[0]]
-    sys.argv += ['--ignore-paths', 'vendor']
+    sys.argv += ['--no-autodetect', '--ignore-paths', 'vendor']
     run.main()
